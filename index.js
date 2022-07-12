@@ -38,12 +38,12 @@ for (const file of commands) {
     commandList.push(`${file.split('.'[0])}`)
     client.commands.set(command.name, command)
 }
- console.log(`✔️ Commands loaded: ${commandList}`)
+ console.log(`Sucessfully loaded: ${commandList}`)
 
 client.on("messageCreate", message => {
  if(message.content.startsWith(prefix)) {
  const args = message.content.slice(prefix.length).trim().split(/ +/g)
- const commandName = args.shift()
+ const commandName = args.shift().toLowerCase()
  const command = client.commands.get(commandName)
  if (!command) return
  command.run(client, message, args)
